@@ -1,17 +1,11 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import * as NearApiJs from 'near-api-js'
 
 import {
-  CAvatar,
-  CButton,
-  CButtonGroup,
   CCard,
   CCardBody,
-  CCardFooter,
-  CCardHeader,
   CCol,
-  CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -23,52 +17,9 @@ import {
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
-import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cibGoogle,
-  cibFacebook,
-  cibLinkedin,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cibTwitter,
-  cilCloudDownload,
-  cilPeople,
-  cilUser,
-  cilUserFemale,
-} from '@coreui/icons'
-import {
-  // CRow,
-  // CCol,
-  CDropdown,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownToggle,
-  CWidgetStatsA,
-} from '@coreui/react'
-// import { getStyle } from '@coreui/utils'
-import { CChartBar } from '@coreui/react-chartjs'
-// import CIcon from '@coreui/icons-react'
-import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
-
-// import avatar1 from 'src/assets/images/avatars/1.jpg'
-// import avatar2 from 'src/assets/images/avatars/2.jpg'
-// import avatar3 from 'src/assets/images/avatars/3.jpg'
-// import avatar4 from 'src/assets/images/avatars/4.jpg'
-// import avatar5 from 'src/assets/images/avatars/5.jpg'
-// import avatar6 from 'src/assets/images/avatars/6.jpg'
-import { getDates, groupAndSum, gte, findCumulativeSum, groupAndSumScalar } from 'src/helpers.js'
-
-const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
+import { CWidgetStatsA } from '@coreui/react'
+import { cilArrowBottom, cilArrowTop } from '@coreui/icons'
+import { getDates, groupAndSum, gte, findCumulativeSum } from 'src/helpers.js'
 
 class Dashboard extends React.Component {
   static get propTypes() {
