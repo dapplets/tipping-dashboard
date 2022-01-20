@@ -54,11 +54,11 @@ class Dashboard extends React.Component {
     const activeUsersToday = usersActivityValues[usersActivityValues.length - 1]
 
     const totalUsersToday = uniqueUsersAccValues[uniqueUsersAccValues.length - 1]
-    const totalUsersYesterday = uniqueUsersAccValues[uniqueUsersAccValues.length - 2]
+    const totalUsersYesterday = uniqueUsersAccValues[uniqueUsersAccValues.length - 7]
     const usersPercent = ((totalUsersToday / totalUsersYesterday - 1) * 100).toFixed(1)
 
     const totalTipsAmountToday = tipsAmountAccValues[tipsAmountAccValues.length - 1]
-    const totalTipsAmountYesterday = tipsAmountAccValues[tipsAmountAccValues.length - 2]
+    const totalTipsAmountYesterday = tipsAmountAccValues[tipsAmountAccValues.length - 7]
     const tipsPercent = ((totalTipsAmountToday / totalTipsAmountYesterday - 1) * 100).toFixed(1)
 
     const contractBalance = Number(NearApiJs.utils.format.formatNearAmount(data.contractBalance))
@@ -73,9 +73,9 @@ class Dashboard extends React.Component {
               color="primary"
               value={
                 <>
-                  {totalUsersToday + ' '}
+                  {totalUsersToday + ' Users '}
                   <span className="fs-6 fw-normal">
-                    ({usersPercent}%{' '}
+                    ({usersPercent}%{'/week'}
                     {usersPercent > 0 ? (
                       <CIcon icon={cilArrowTop} />
                     ) : (
@@ -85,7 +85,7 @@ class Dashboard extends React.Component {
                   </span>
                 </>
               }
-              title="Unique Users"
+              title="Total Unique"
               chart={
                 <CChartLine
                   className="mt-3 mx-3"
@@ -151,8 +151,8 @@ class Dashboard extends React.Component {
             <CWidgetStatsA
               className="mb-4"
               color="info"
-              value={<>{activeUsersToday}</>}
-              title="Active Users Today"
+              value={<>{activeUsersToday} Users</>}
+              title="Active Today"
               style={{ height: '162.78px' }}
             />
           </CCol>
@@ -162,9 +162,9 @@ class Dashboard extends React.Component {
               color="warning"
               value={
                 <>
-                  {totalTipsAmountToday.toFixed(4) + ' $NEAR '}
+                  {totalTipsAmountToday.toFixed(4) + ' Ⓝ '}
                   <span className="fs-6 fw-normal">
-                    ({tipsPercent}%{' '}
+                    ({tipsPercent}%{'/week'}
                     {tipsPercent > 0 ? (
                       <CIcon icon={cilArrowTop} />
                     ) : (
@@ -241,11 +241,11 @@ class Dashboard extends React.Component {
               color="danger"
               value={
                 <>
-                  {contractBalance.toFixed(4) + ' $NEAR '}
+                  {contractBalance.toFixed(4) + ' Ⓝ '}
                   <span className="fs-6 fw-normal">({percentLocked}%)</span>
                 </>
               }
-              title="Tokens not withdrawn"
+              title="Unclaimed Tokens"
               style={{ height: '162.78px' }}
             />
           </CCol>
@@ -313,7 +313,7 @@ class Dashboard extends React.Component {
           <CCardBody>
             <CRow>
               <h5 id="traffic" className="card-title mb-0">
-                Tips amount per day, NEAR
+                Tips amount per day, $NEAR
               </h5>
             </CRow>
             <CChartLine
