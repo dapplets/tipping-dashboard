@@ -4,7 +4,7 @@ import * as NearApiJs from 'near-api-js'
 
 export async function getData() {
   const connection = new autobahn.Connection({
-    url: 'wss://near-explorer-wamp.onrender.com/ws/',
+    url: 'wss://wamp.onrender.com/ws',
     realm: 'near-explorer',
     retry_if_unreachable: true,
     max_retries: Number.MAX_SAFE_INTEGER,
