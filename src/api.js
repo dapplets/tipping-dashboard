@@ -56,7 +56,19 @@ export async function getData() {
     }
 
     const [action] = tx.actions
-    const { args } = action
+    const { args, kind } = action
+
+    if (kind !== 'FunctionCall') continue
+
+    let args_json
+
+    try {
+      args_json = JSON.parse(atob(args.args))
+    } catch (err) {
+      console.error('Cannot handle the transaction', tx)
+      console.error(err)
+      continue
+    }
 
     if (uniqueUsers.findIndex((x) => x.signerId === tx.signerId) === -1) {
       uniqueUsers.push({
@@ -79,20 +91,20 @@ export async function getData() {
       // Number(NearApiJs.utils.format.formatNearAmount())
       transfers.push({
         from: tx.signerId,
-        to: args.args_json.recipientExternalAccount,
+        to: args_json.recipientExternalAccount,
         amount: amount,
         fee: fee,
         total: total,
-        item: args.args_json.itemId,
+        item: args_json.itemId,
         timestamp: tx.blockTimestamp,
         date: new Date(tx.blockTimestamp).toISOString().substring(0, 10),
       })
     } else if (args.method_name === 'requestVerification') {
       requests.push({
         internalAccount: tx.signerId,
-        externalAccount: args.args_json.externalAccount,
-        url: args.args_json.externalAccount,
-        isUnlink: args.args_json.isUnlink,
+        externalAccount: args_json.externalAccount,
+        url: args_json.externalAccount,
+        isUnlink: args_json.isUnlink,
         timestamp: tx.blockTimestamp,
         date: new Date(tx.blockTimestamp).toISOString().substring(0, 10),
       })
