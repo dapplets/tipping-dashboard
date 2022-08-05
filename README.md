@@ -1,3 +1,5 @@
+![tipping-dashboard](https://user-images.githubusercontent.com/51093278/183044201-aa6d70ec-3b73-43e1-bb3f-5c4b165937d9.png)
+
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
